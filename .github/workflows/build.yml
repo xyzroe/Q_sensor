@@ -1,0 +1,55 @@
+name: ESP-IDF Build
+
+permissions:
+  contents: write
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "*"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      
+    - name: Setup Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.7'
+
+    - name: Install ESP-IDF
+      run: |
+        git clone --recursive -b v5.3.1 https://github.com/espressif/esp-idf.git
+        cd esp-idf
+        ./install.sh
+        . ./export.sh
+
+    - name: Install IDF Component Manager and dependencies
+      run: |
+        . ./esp-idf/export.sh
+        python -m pip install idf-component-manager
+        idf.py reconfigure
+
+    - name: Build
+      id: build
+      run: |
+        . ./esp-idf/export.sh
+        idf.py build
+      
+    - name: Make OTA and move BIN files
+      run: |
+        . ./tools/make_ota.sh
+
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      with:
+        generate_release_notes: true
+        name: "${{ env.version }} (${{ env.build_date }})"
+        files: |
+          output/Q_sensor.ota
+          output/Q_sensor.bin
+          
