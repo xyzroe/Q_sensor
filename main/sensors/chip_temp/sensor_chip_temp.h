@@ -1,0 +1,1 @@
+void sensor_chip_temp();

@@ -1,0 +1,1 @@
+void sensor_ags10();
