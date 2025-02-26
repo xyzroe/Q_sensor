@@ -65,6 +65,10 @@ If you don't need some value - go to reporting tab and set
 
 You can find the latest release on <a href="./releases">releases page</a> and install like any other ESP32 firmware.
 
+## Where to buy?
+
+[Official store](https://www.tindie.com/products/adz1122/esp32-c6-multi-sensor-co2-voc-imu/)
+
 ## License
 
 <div align="center">
