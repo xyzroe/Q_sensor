@@ -36,7 +36,7 @@ Found something at address 0x7e?
 - **SCL** - IO7
 
 </div>
-<img src="./images/1.png" width="35%" alt="Overview" style="margin-left: auto; margin-top: 50px">
+
 </div>
 
 ## zigbee2mqtt
