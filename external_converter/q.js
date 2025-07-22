@@ -71,7 +71,7 @@ const definition = {
             reporting: defaultReporting,
         }),
         enumLookup({
-            name: 'possition',
+            name: 'position',
             lookup: {Incorrect: 0, Horizontal: 1, Vertical: 2},
             cluster: 'genMultistateValue',
             attribute: 'presentValue',
